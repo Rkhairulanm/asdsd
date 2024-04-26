@@ -10,9 +10,9 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\PembelianController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 Route::get('/asd', function () {
     return view('layouts.coba', ["title" => "Dashboard"]);
 });
@@ -20,7 +20,7 @@ Route::get('/asd', function () {
 Route::middleware('auth')->group(function () {
     Route::get('/', [ProdukController::class, 'main'])->name('dashboard');
 
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit')->middleware('');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
@@ -49,12 +49,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/struk', [StrukController::class, 'index']);
     Route::get('/struk-detail/{penjualan_id}', [StrukController::class, 'show']);
 
-    Route::get('/user-kelola', [UserController::class, 'index']);
-    Route::get('/user-delete/{id}', [UserController::class, 'destroy']);
-    Route::get('/user-edit/{id}', [UserController::class, 'edit']);
-    Route::post('/user-edit/{id}', [UserController::class, 'update']);
+    Route::get('/user-kelola', [UserController::class, 'index'])->middleware('admin');
+    Route::get('/user-delete/{id}', [UserController::class, 'destroy'])->middleware('admin');
+    Route::get('/user-edit/{id}', [UserController::class, 'edit'])->middleware('admin');
+    Route::post('/user-edit/{id}', [UserController::class, 'update'])->middleware('admin');
 
-    Route::get('/logs', [LogController::class, 'index']);
+    Route::get('/logs', [LogController::class, 'index'])->middleware('admin');
 
 });
 

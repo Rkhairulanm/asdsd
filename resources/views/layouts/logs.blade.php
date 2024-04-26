@@ -7,19 +7,6 @@
                 <div>
                     <a href="/produk-tambah" class="btn btn-success">Tambah Produk</a>
                 </div>
-                <form action="" method="get">
-                <form action="">
-                    <div class="pe-md-3 d-flex align-items-center float-end">
-                        <div class="input-group">
-                            <span style="max-height: 42px" class="input-group-text text-body"><i class="fas fa-search"
-                                    aria-hidden="true"></i></span>
-                            <input type="text" id="searchInput" name="keyword" class="form-control"
-                                placeholder="Cari produk...">
-                            <button class="btn btn-outline-secondary" type="submit">Cari</button>
-                        </div>
-                    </div>
-                </form>
-                </form>
             </div>
             <!-- /.card-header -->
             <div class="card-body">

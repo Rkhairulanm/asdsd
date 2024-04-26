@@ -1,11 +1,14 @@
 @extends('main')
 @section('content')
+    <div class="preloader flex-column justify-content-center align-items-center">
+        <i class="fa-solid fa-hippo animation__wobble" style="font-size: 5em;" alt="AdminLTELogo"></i>
+    </div>
     <div class="row">
         <div class="col-lg-3 col-6">
             <!-- small box for Penghasilan Bulan Ini -->
             <div class="small-box bg-info">
                 <div class="inner">
-                    <h3>{{ $totalPenghasilan }}</h3>
+                    <h3>{{ intval($totalPenghasilan) }}</h3>
                     <p>Penghasilan Bulan Ini</p>
                 </div>
                 <div class="icon">
@@ -32,7 +35,7 @@
             <!-- small box for Total Penghasilan -->
             <div class="small-box bg-warning">
                 <div class="inner">
-                    <h3>{{ $totalHarga }}</h3>
+                    <h3>{{ intval($totalHarga) }}</h3>
                     <p>Total Penghasilan</p>
                 </div>
                 <div class="icon">
@@ -57,35 +60,9 @@
     </div>
 
     <div class="row mt-4">
-        <div class="col-lg-6 mb-lg-0 mb-4">
+        <div class="col-lg-6 mb-lg-0 mb-4 "> <!-- Tambahkan class text-center di sini -->
             <div class="card">
-                <div class="card-body p-3">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="d-flex flex-column h-100">
-                                <p class="mb-1 pt-2 text-bold">Welcome</p>
-                                <h5 class="font-weight-bolder">{{ Auth::user()->name }}</h5>
-                                <p class="mb-3 mt-2">Start Managing Products</p>
-                                <a href="/produk"><button class="btn btn-primary">Manage Products</button></a>
-                            </div>
-                        </div>
-                        <div class="col-lg-5 ms-auto text-center mt-5 mt-lg-0">
-                            <div class="bg-gradient-primary border-radius-lg h-100">
-                                <!-- Ganti tag img dengan tag untuk ikon dari Font Awesome -->
-                                <div class="position-relative d-flex align-items-center justify-content-center h-100">
-                                    <!-- Tambahkan kelas untuk ikon Hippo dari Font Awesome dan ubah ukurannya -->
-                                    <i class="fa fa-boxes-stacked text-white display-1"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-lg-6 mb-lg-0 mb-4 mt-3">
-            <div class="card">
-                <div class="card-body p-3 ">
+                <div class="card-body">
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="d-flex flex-column h-100">
@@ -94,7 +71,7 @@
                                     <h5 class="font-weight-bolder">{{ $produkTeratasInfo->nama_produk }}</h5>
                                     <p class="mb-3 mt-2">Total Pemesanan : {{ $totalPenjualanTeratas }}</p>
                                     <a class="text-secondar text-sm font-weight-bold mb-0 icon-move-right mt-auto"
-                                        href="/detail-penjualan/{{ $produkTeratasInfo->produk_id }}">
+                                        href="/detail-pembelian/{{ $produkTeratasInfo->produk_id }}">
                                         Cek Pemesanan
                                         <i cl ass="fas fa-arrow-right text-sm ms-1" aria-hidden="true"></i>
                                     </a>
@@ -110,6 +87,20 @@
                                     style="object-fit: cover;max-width: 165px; max-height: 145px;" alt="...">
                             @endif
                         </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-lg-6 mb-lg-0 mb-4 mt-3 text-center">
+            <div class="card">
+                <div class="card-body p-3 pb-3">
+                    <div class="d-flex flex-column h-100">
+                        <p class="mb-1 text-bold text-secondary">Welcome</p>
+                        <h5 class="font-weight-bolder text-xl">{{ Auth::user()->name }}</h5>
+                        <a href="/produk"><button class="btn btn-secondary">Manage Products</button></a>
                     </div>
                 </div>
             </div>
