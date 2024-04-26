@@ -1,5 +1,8 @@
 @extends('main')
 @section('content')
+    <div class="preloader flex-column justify-content-center align-items-center">
+        <i class="fa-solid fa-hippo animation__wobble" style="font-size: 5em;" alt="AdminLTELogo"></i>
+    </div>
     <form action="/pembelian-lanjutan">
         @method('GET')
         @csrf

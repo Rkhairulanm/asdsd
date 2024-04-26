@@ -1,9 +1,6 @@
 @extends('main')
 
 @section('content')
-    <div class="preloader flex-column justify-content-center align-items-center">
-        <i class="fa-solid fa-hippo animation__wobble" style="font-size: 5em;" alt="AdminLTELogo"></i>
-    </div>
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg mb-5">
         <div class="container-fluid py-4">
             <div class="row">
@@ -33,9 +30,14 @@
                                 </div>
                                 <div class="info-item">
                                     <span class="info-label">Total Pembayaran : </span>
-                                    <span class="info-value"><u>{{ $detail->first()->bayar }}</u></span>
+                                    <span class="info-value"><u>
+                                            @isset($detail->first()->bayar)
+                                                {{ $detail->first()->bayar }}
+                                            @else
+                                                0
+                                            @endisset
+                                        </u></span>
                                 </div>
-
                                 <div class="info-item">
                                     <span class="info-label">Status : </span>
                                     @php
@@ -44,15 +46,27 @@
                                         $totalPembayaran = $detail->first()->bayar ?? 0;
                                     @endphp
                                     @if ($totalPembayaran != 0 && $totalPembayaran < $totalPembelian)
-                                        <span class="badge badge-sm bg-gradient-warning">Belum Lunas</span>
+                                    <span class="badge badge-sm bg-gradient-warning">Belum Lunas</span>
+                                    <form action="/pembayaran/{{ $pelanggan->pelanggan_id }}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="pelanggan_id" value="{{ $pelanggan->pelanggan_id }}">
+                                        <div class="form-group mb-3">
+                                            <label for="pembayaran" class="form-label">Pembayaran:</label>
+                                            <input type="number" class="form-control" id="pembayaran" name="pembayaran" required>
+                                        </div>
+                                        <center>
+                                            <button type="submit" class="btn btn-primary">Submit Pembayaran</button>
+                                        </center>
+                                    </form>
+                                @else
+                                    @if ($totalPembayaran === 0) {{-- Periksa apakah total pembayaran adalah 0 --}}
+                                        <span class="badge badge-sm bg-gradient-danger">Kasbon</span>
                                         <form action="/pembayaran/{{ $pelanggan->pelanggan_id }}" method="POST">
                                             @csrf
-                                            <input type="hidden" name="pelanggan_id"
-                                                value="{{ $pelanggan->pelanggan_id }}">
+                                            <input type="hidden" name="pelanggan_id" value="{{ $pelanggan->pelanggan_id }}">
                                             <div class="form-group mb-3">
                                                 <label for="pembayaran" class="form-label">Pembayaran:</label>
-                                                <input type="number" class="form-control" id="pembayaran" name="pembayaran"
-                                                    required>
+                                                <input type="number" class="form-control" id="pembayaran" name="pembayaran" required>
                                             </div>
                                             <center>
                                                 <button type="submit" class="btn btn-primary">Submit Pembayaran</button>
@@ -69,24 +83,12 @@
                                         @endforeach
                                         @if ($kasbon)
                                             <span class="badge badge-sm bg-gradient-danger">Kasbon</span>
-                                            <form action="/pembayaran/{{ $pelanggan->pelanggan_id }}" method="POST">
-                                                @csrf
-                                                <input type="hidden" name="pelanggan_id"
-                                                    value="{{ $pelanggan->pelanggan_id }}">
-                                                <div class="form-group mb-3">
-                                                    <label for="pembayaran" class="form-label">Pembayaran:</label>
-                                                    <input type="number" class="form-control" id="pembayaran"
-                                                        name="pembayaran" required>
-                                                </div>
-                                                <center>
-                                                    <button type="submit" class="btn btn-primary">Submit
-                                                        Pembayaran</button>
-                                                </center>
-                                            </form>
                                         @else
                                             <span class="badge badge-sm bg-gradient-success">Lunas</span>
                                         @endif
                                     @endif
+
+                                @endif
                                 </div>
                             </div>
 

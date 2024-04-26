@@ -47,7 +47,8 @@
         <div class="col">
             <center>
                 <h3 class="mt-3 text-center d-print-none text-xl">Struk Pembelian</h3>
-                <a href="{{ $title == 'Struk' ? '/pembelian' : '/struk' }}" class="btn btn-danger d-print-none  my-3">Back</a>
+                <a href="{{ $title == 'Struk' ? '/pembelian' : '/struk' }}"
+                    class="btn btn-danger d-print-none  my-3">Back</a>
             </center>
         </div>
     </div>
@@ -84,8 +85,11 @@
                             class="float-right">Rp.{{ $totalHargaKeseluruhan }}</span></h5>
                     <h5 class="text-dark font-weight-bold">Bayar <span
                             class="float-right">Rp.{{ intval($bayar) }}</span></h5>
-                    <h5 class="text-dark font-weight-bold">Kembalian <span
-                            class="float-right">Rp.{{ $kembalian }}</span></h5>
+                    @if ($bayar !== null && $bayar - $totalHargaKeseluruhan >= 0)
+                        <h5 class="text-dark font-weight-bold">Kembalian <span
+                                class="float-right">Rp.{{ $kembalian }}</span></h5>
+                    @endif
+
                     <div class="dashed-line"></div>
                     <h6 class="text-secondary mx-auto d-flex justify-content-center mt-4">
                         <span class="float-end">
@@ -96,7 +100,7 @@
                                     <span class="badge bg-gradient-warning">Belum Lunas</span>
                                 @endif
                             @else
-                                <span class="badge bg-gradient-danger">Belum Bayar</span>
+                                <span class="badge bg-gradient-danger">Kasbon</span>
                             @endif
 
                         </span>

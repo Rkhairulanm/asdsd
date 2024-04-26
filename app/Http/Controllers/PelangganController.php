@@ -13,7 +13,7 @@ class PelangganController extends Controller
     public function index(Request $request)
     {
         $keyword = $request->keyword;
-        $pelanggan = Pelanggan::where('nama_pelanggan', 'LIKE', '%' . $keyword . '%')->with('penjualan.detailPenjualans')->paginate(15);
+        $pelanggan = Pelanggan::where('nama_pelanggan', 'LIKE', '%' . $keyword . '%')->orderBy('created_at', 'DESC')->with('penjualan.detailPenjualans')->paginate(15);
         $detail = DetailPenjualan::with('produk')->get();
         $title = 'Kelola Pelanggan';
         return view('layouts.pelanggan', compact('pelanggan', 'title', 'detail'));

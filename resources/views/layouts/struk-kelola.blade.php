@@ -1,6 +1,9 @@
 @extends('main')
 
 @section('content')
+<div class="preloader flex-column justify-content-center align-items-center">
+    <i class="fa-solid fa-hippo animation__wobble" style="font-size: 5em;" alt="AdminLTELogo"></i>
+</div>
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
         <div class="container-fluid py-4">
             <div class="row">
@@ -12,7 +15,7 @@
                                     <h4 class="">Riwayat Penjualan</h4>
                                 </div>
                                 <form action="" method="get">
-                                    <div class="pe-md-3 d-flex align-items-center float-end">
+                                    <div class="pe-md-3 d-flex align-items-center float-end mb-2">
                                         <div class="input-group">
                                             <span style="max-height: 42px" class="input-group-text text-body"><i
                                                     class="fas fa-search" aria-hidden="true"></i></span>
@@ -23,7 +26,6 @@
                                     </div>
                                 </form>
                             </div>
-                            <hr class="bg-dark px-auto">
                             @if (Session::has('status'))
                                 <div class="alert alert-success text-white opacity-5" role="alert">
                                     {{ Session::get('message') }}
@@ -36,7 +38,7 @@
                                 <div class="mx-4 mb-5">
                                     @foreach ($penjualan as $penjualan)
                                         <a href="/struk-detail/{{ $penjualan->penjualan_id }}">
-                                            <div class="row me-4">
+                                            <div class="row me-4 mb-3">
                                                 <div class="col">
                                                     <div class="d-flex mt-3">
                                                         <i

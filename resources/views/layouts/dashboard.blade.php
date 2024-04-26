@@ -99,7 +99,7 @@
                 <div class="card-body p-3 pb-3">
                     <div class="d-flex flex-column h-100">
                         <p class="mb-1 text-bold text-secondary">Welcome</p>
-                        <h5 class="font-weight-bolder text-xl">{{ Auth::user()->name }}</h5>
+                        <h5 class="font-weight-bolder text-xl mb-2">{{ Auth::user()->name }}</h5>
                         <a href="/produk"><button class="btn btn-secondary">Manage Products</button></a>
                     </div>
                 </div>
@@ -108,14 +108,12 @@
         <div class="col-lg-6 col-md-4 mt-3">
             <div class="card h-100">
                 <div class="card-header pb-0">
-                    <h4 class="text-center">Total Casbon</h4>
+                    <h4 class="text-center text-xl mb-1">Total Casbon</h4>
                 </div>
                 <div class="card-body p-3">
-                    <h5 class="text-secondary">Jumlah Kasbon</h5>
-                    <h6 class="text-secondary"><u>{{ $jumlahKasbon }}</u></h6>
+                    <h5 class="text-secondary py-2">Jumlah Kasbon <span class="float-right"><u>{{ $jumlahKasbon }}</u></span></h5>
                     <hr class="bg-dark">
-                    <h5 class="text-secondary">Total Kasbon</h5>
-                    <h6 class="text-secondary"><u>{{ $totalKasbonBelumLunasi }}</u></h6>
+                    <h5 class="text-secondary py-2">Total Kasbon <span class="float-right"><u>{{ $totalKasbonBelumLunasi }}</u></span></h5>
                     <hr class="bg-dark">
                 </div>
             </div>
@@ -123,17 +121,17 @@
         <div class="col-lg-6 col-md-4 mt-3">
             <div class="card h-100">
                 <div class="card-header pb-0">
-                    <h4 class="text-center">Informasi Pembayaran</h4>
+                    <h4 class="text-center text-xl mb-1">Informasi Pembayaran</h4>
                 </div>
                 <div class="card-body p-3">
-                    <h5 class="text-secondary">Jumlah Kasbon</h5>
-                    <h6 class="text-secondary"><u>{{ $jumlahKasbon }}</u></h6>
+                    <h5 class="text-secondary py-2">Jumlah Kasbon <span class="float-right"><u>{{ $jumlahKasbon }}</u></span>
+                    </h5>
                     <hr class="bg-dark">
-                    <h5 class="text-secondary">Jumlah yang Belum Lunas</h5>
-                    <h6 class="text-secondary"><u>{{ $jumlahBelumLunas }}</u></h6>
+                    <h5 class="text-secondary py-2">Jumlah yang Belum Lunas <span
+                            class="float-right"><u>{{ $jumlahBelumLunas }}</u></span></h5>
                     <hr class="bg-dark">
-                    <h5 class="text-secondary">Jumlah yang Sudah Lunas</h5>
-                    <h6 class="text-secondary"><u>{{ $jumlahLunas }}</u></h6>
+                    <h5 class="text-secondary py-2">Jumlah yang Sudah Lunas <span
+                            class="float-right"><u>{{ $jumlahLunas }}</u></span></h5>
                     <hr class="bg-dark">
                 </div>
 

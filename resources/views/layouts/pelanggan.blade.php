@@ -1,6 +1,9 @@
 @extends('main')
 
 @section('content')
+    <div class="preloader flex-column justify-content-center align-items-center">
+        <i class="fa-solid fa-hippo animation__wobble" style="font-size: 5em;" alt="AdminLTELogo"></i>
+    </div>
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
 
         <div class="container-fluid py-4">
